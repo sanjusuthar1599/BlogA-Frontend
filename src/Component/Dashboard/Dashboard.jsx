@@ -177,10 +177,7 @@ const Dashboard = () => {
                         {items.image && (
                           <div className="md:w-1/3 w-full h-64 md:h-auto">
                             <img
-                              // src={`http://localhost:3000/uploads/${items.image}`}
-{/*                                    src={`https://blogapp-backend-2-o19a.onrender.com/uploads/${items.image}`} */}
-                            src={`https://res.cloudinary.com/djl6lggob/image/upload/${items.image}`}
-
+                              src={`https://res.cloudinary.com/djl6lggob/image/upload/${items.image}`}
                               alt={items.title}
                               className="w-full h-full object-cover rounded-t-xl md:rounded-t-none md:rounded-l-xl"
                             />
