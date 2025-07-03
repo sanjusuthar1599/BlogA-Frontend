@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  /* Sidebar */
+.dark .bg-gray-100 {
+  background-color: #181818;
+}
+
+.dark .text-gray-800 {
+  color: #ffffff;
+}
+
+.dark .sidebar {
+  background: linear-gradient(to bottom right, #1f2937, #374151);
+}
+
+.dark .hover-dark:hover {
+  background-color: #374151;
+}
+
+.dark .main-content {
+  background-color: #121212;
+  color: white;
+}
+
+.dark .dark-banner {
+  background: linear-gradient(to right, #1f1f1f, #2d2d2d); /* dark gray gradient */
+  color: white;
+}
+
+.dark .optiontype{
+background-color: #1f2937;
+color: white;
+}
+
+
+/* deshboard */
+/* index.css */
+.dark .bg-white {
+  background-color: #1f2937 !important; /* dark:bg-gray-800 */
+}
+.dark .text-gray-700 {
+  color: #e5e7eb !important; /* dark:text-gray-200 */
+}
+.dark .text-gray-600 {
+  color: #d1d5db !important;
+}
+.dark .text-gray-800 {
+  color: #ffffff !important;
+}
+.dark .border-gray-200 {
+  border-color: #4b5563 !important;
+}
+
+
+
