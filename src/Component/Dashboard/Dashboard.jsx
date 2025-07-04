@@ -187,12 +187,12 @@ const Dashboard = () => {
                         {/* ✍️ Content */}
                         <div className="flex flex-col justify-between p-6 w-full">
                           {/* Title + Buttons */}
-                          <div className="flex justify-between flex-wrap items-start mb-4">
+                          <div className="flex justify-between flex-wrap items-start mb-4 flex justify-between flex-wrap items-start mb-4 max-[1199px]:flex-col-reverse">
                             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white flex-1">
                               {items.title}
                             </h2>
                             {filterType === "my blog" && (
-                              <div className="flex gap-2 mt-2 sm:mt-0">
+                              <div className="flex gap-2 mt-2 sm:mt-0 max-[1199px]:ml-auto max-[1199px]:mb-[10px]">
                                 <button
                                   onClick={() => {
                                     setSelectedProduct(items);
