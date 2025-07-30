@@ -7,6 +7,8 @@ import Dashboard from "./Component/Dashboard/Dashboard.jsx";
 import Addpost from "./Component/AddPost/Addpost.jsx";
 import { Toaster } from "react-hot-toast"; 
 import Setting from "./Component/Setting/Setting.jsx";
+import VerifyOtp from "./Component/Authecation/VerifyOtp.jsx";
+
 
 const App = () => {
   return (
