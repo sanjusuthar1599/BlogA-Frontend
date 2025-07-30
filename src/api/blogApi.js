@@ -46,3 +46,8 @@ export const updateblog = async (id, data) => {
 export const deleteblog = async (id) => {
   return await apiRequest(`api/posts/${id}`, "DELETE");
 };
+
+// email verifyEmail
+export const postverifyotp = async (userData) => {
+  return await apiRequest(`api/auth/verify-email`, "POST", userData);
+};
