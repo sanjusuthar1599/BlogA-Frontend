@@ -15,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/verify-otp" element={<VerifyOtp />} />
 
           {/* ✅ Nested routes under Sidebar */}
           <Route path="/" element={<Sidebar />}>
