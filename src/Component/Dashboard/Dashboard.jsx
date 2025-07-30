@@ -138,8 +138,8 @@ const Dashboard = () => {
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded shadow-md">
               <div className="flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
-                  Explore All Blogs – Latest Posts with Guidelines.
+          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+                  {filterType === "my blog" ? "Explore Your Blog Posts " : "Explore All Blogs – Latest Posts with Guidelines."}
                 </h2>
 
                 <select
