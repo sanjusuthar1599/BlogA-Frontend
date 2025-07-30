@@ -9,7 +9,8 @@ import {
   getblogbyid,
   getsignupuser,
   updateblog,
-  deleteblog
+  deleteblog,
+  postverifyotp
 } from "../../../api/blogApi";
 
 //Signup API Saga
@@ -181,6 +182,24 @@ export function* DeleteBlogByIdSaga(action) {
   }
 }
 
+// email verify API Saga
+export function* postVerifyOtpSaga({ payload }) {
+  try {
+    yield put(actions.postVerifyOtpLoading(true));
+    yield put(actions.postVerifyOtpSuccess(false));
+
+    const response = yield call(postverifyotp, payload);
+
+    yield put(actions.postVerifyOtpResponse({ response }));
+
+    yield put(actions.postVerifyOtpLoading(false));
+    yield put(actions.postVerifyOtpSuccess(true));
+  } catch (error) {
+    yield put(actions.postVerifyOtpLoading(false));
+    yield put(actions.postVerifyOtpSuccess(false));
+  }
+}
+
 //signup API watcher saga
 export function* watchSignupApiSaga() {
   yield takeLatest(actions.postSignupAPiRequest.type, postSignupApiSaga);
@@ -224,4 +243,8 @@ export function* watchUpdateBlogSaga() {
 // delete blog by id watcher saga
 export function* watchDeleteBlogSaga() {
   yield takeLatest(actions.deleteBlogRequest.type, DeleteBlogByIdSaga);
+}
+// email verify watcher saga
+export function* watchPostVerifyOtpSaga() {
+  yield takeLatest(actions.postVerifyOtpRequest.type, postVerifyOtpSaga);
 }
