@@ -44,6 +44,11 @@ export const INITIAL_STATE = {
   deleteBlogResponseiDetails: [],
   deleteBlogSuccessData: false,
   deleteBlogLoadingState: false,
+
+    // email verify otp
+  postVerifyOtpDetails: {},
+  postVerifyOtpSuccessData: false,
+  postVerifyOtpLoadingState: false,
   
    // dark theme
   theme: localStorage.getItem("theme") || "light"
@@ -264,6 +269,27 @@ deleteBlogLoading(state, { payload }) {
   };
 },
 
+    // email verify otp
+postVerifyOtpResponse(state, { payload }) {
+  return {
+    ...state,
+    postVerifyOtpDetails: payload?.response,
+  };
+},
+postVerifyOtpRequest: (state) => state,
+postVerifyOtpSuccess(state, { payload }) {
+  return {
+    ...state,
+    postVerifyOtpSuccessData: payload,
+  };
+},
+postVerifyOtpLoading(state, { payload }) {
+  return {
+    ...state,
+    postVerifyOtpLoadingState: payload,
+  };
+}
+    
 
   },
 });
@@ -320,6 +346,12 @@ export const {
   deleteBlogSuccess,
   deleteBlogLoading,
 
+  // email verify otp
+  postVerifyOtpResponse,
+  postVerifyOtpRequest,
+  postVerifyOtpSuccess,
+  postVerifyOtpLoading,
+  
 
 } = BlogSlice.actions;
 
