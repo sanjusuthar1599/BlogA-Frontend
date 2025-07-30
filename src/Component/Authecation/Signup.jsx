@@ -1,3 +1,4 @@
+// Signup.jsx
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,21 +48,8 @@ const Signup = () => {
     return newErrors;
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const validationErrors = validate();
-  //   if (Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //   } else {
-  //     dispatch(postSignupAPiRequest(formData));
-  //     setFormData({name: "", email: "", password: "", role: "" })
-  //     setErrors({});
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -70,9 +58,6 @@ const Signup = () => {
 
     setLoading(true);
     await dispatch(postSignupAPiRequest(formData));
-
-    setFormData({ name: "", email: "", password: "", role: "" });
-    setErrors({});
   };
 
   useEffect(() => {
@@ -80,16 +65,23 @@ const Signup = () => {
 
     setLoading(false);
 
+    const user = postSignupAPiDetails?.userDetails;
+    const userId = user?.user_id || user?._id;
+
     if (postSignupAPiDetails?.message?.includes("Registration successful")) {
-      navigate("/login", {
+      setFormData({ name: "", email: "", password: "", role: "" });
+      setErrors({});
+
+      navigate(`/verify-otp?user_id=${userId}`, {
         state: {
           message:
             "Registration successful! Please verify your email before logging in!",
           duration: 8000,
+          user_id: userId,
         },
       });
     } else if (postSignupAPiDetails?.message === "User already exists") {
-      toast.error("User already exists please diffrent email use.");
+      toast.error("User already exists, please use a different email.");
     }
 
     dispatch(postSignupAPiResponse({ response: null }));
@@ -118,7 +110,7 @@ const Signup = () => {
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
-            className="pl-10  w-full py-2.5 px-4 bg-[#f8a57d] bg-opacity-50 text-white rounded-md placeholder-white focus:outline-none"
+            className="pl-10 w-full py-2.5 px-4 bg-[#f8a57d] bg-opacity-50 text-white rounded-md placeholder-white focus:outline-none"
           />
           {errors.name && (
             <p className="text-black text-sm ms-1 absolute">{errors.name}</p>
@@ -131,7 +123,7 @@ const Signup = () => {
           <input
             type="email"
             name="email"
-            placeholder="Username or Email address"
+            placeholder="Email address"
             value={formData.email}
             onChange={handleChange}
             className="pl-10 w-full py-2.5 bg-[#f8a57d] bg-opacity-50 text-white rounded-md placeholder-white focus:outline-none"
@@ -181,7 +173,7 @@ const Signup = () => {
 
         <button
           type="submit"
-          className="w-full bg-red-800 text-white  hover:bg-red-700 py-3 mb-0 rounded-md flex justify-center items-center"
+          className="w-full bg-red-800 text-white hover:bg-red-700 py-3 mb-0 rounded-md flex justify-center items-center"
           disabled={loading}
         >
           {loading ? <Loader size={20} color="white" /> : "Register"}
@@ -190,7 +182,7 @@ const Signup = () => {
         {/* OR login with */}
         <div className="flex items-center justify-between w-full my-6">
           <div className="border-t border-red-700 w-full"></div>
-          <span className="px-3 text-sm w-64 text-white">login with</span>
+          <span className="px-3 text-sm w-64 text-white">or login with</span>
           <div className="border-t border-red-700 w-full"></div>
         </div>
 
@@ -208,7 +200,7 @@ const Signup = () => {
 
         <p className="mt-4 text-center text-white">
           Already have an account?
-          <Link to="/" className="text-red-800 hover:underline ml-1">
+          <Link to="/login" className="text-red-800 hover:underline ml-1">
             Login
           </Link>
         </p>
