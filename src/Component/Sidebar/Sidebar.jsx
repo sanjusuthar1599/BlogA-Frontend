@@ -127,7 +127,7 @@ const Sidebar = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow md:ml-64 p-3 md:p-6 bg-gray-100 dark:bg-[#000] text-gray-800 dark:text-white">
+      <div className="flex-grow md:ml-64 p-6 pt-5 pb-4 bg-gray-100 dark:bg-[#000] text-gray-800 dark:text-white">
         <Outlet />
       </div>
     </div>
@@ -220,3 +220,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
