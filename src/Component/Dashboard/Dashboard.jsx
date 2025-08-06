@@ -101,7 +101,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="w-full mt-10">
+      <div className="w-full mt-5">
         {token && userId && (
           <main className="">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -284,3 +284,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
